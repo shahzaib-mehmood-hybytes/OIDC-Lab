@@ -11,7 +11,7 @@ permissions:
 
 env:
   AWS_REGION: us-east-1
-  BUCKET_NAME: my-awesome-oidc-bucket-1234 # Replace with your actual bucket name
+  BUCKET_NAME: my-awesome-oidc-bucket-123400 # Replace with your actual bucket name
 
 jobs:
   deploy:
