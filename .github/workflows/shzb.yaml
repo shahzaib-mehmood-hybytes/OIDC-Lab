@@ -11,7 +11,6 @@ permissions:
 
 env:
   AWS_REGION: us-east-1
-  BUCKET_NAME: my-awesome-oidc-bucket-123400 # Replace with your actual bucket name
 
 jobs:
   deploy:
@@ -32,6 +31,9 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
