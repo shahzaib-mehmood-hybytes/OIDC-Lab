@@ -1,0 +1,38 @@
+name: Deploy to AWS via OIDC
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write  # This allows GitHub to request the OIDC token
+  contents: read   # This allows GitHub to clone your repo
+
+env:
+  AWS_REGION: us-east-1
+  BUCKET_NAME: your-s3-bucket-name-here  # Replace with your actual bucket name
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Configure AWS credentials via OIDC
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          role-to-assume: arn:aws:iam::751811337288:role/OIDC-Role
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+
