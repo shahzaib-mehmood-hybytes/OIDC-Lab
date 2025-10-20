@@ -1,14 +1,9 @@
-# Configure the AWS Provider
 provider "aws" {
-  region = "us-east-1" # Replace with your desired region
+  region = "us-east-1"
 }
 
-# Define the S3 bucket resource
-resource "aws_s3_bucket" "my_example_bucket" {
-  bucket = "oidc-shzb0011" # Replace with a globally unique bucket name
-
-  tags = {
-    Name        = "MyExampleS3Bucket"
-    Environment = "Development"
-  }
+resource "aws_s3_bucket" "example" {
+  bucket = "my-awesome-oidc-bucket-1234"
+  force_destroy = true
 }
+
