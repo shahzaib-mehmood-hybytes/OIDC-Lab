@@ -11,7 +11,7 @@ permissions:
 
 env:
   AWS_REGION: us-east-1
-  BUCKET_NAME: your-s3-bucket-name-here  # Replace with your actual bucket name
+  BUCKET_NAME: oidc-shzb0011 # Replace with your actual bucket name
 
 jobs:
   deploy:
